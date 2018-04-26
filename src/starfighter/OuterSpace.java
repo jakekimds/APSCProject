@@ -17,7 +17,7 @@ import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+//fgdkf
 public class OuterSpace extends Canvas implements KeyListener, Runnable {
 	private Ship ship;
 	private int score;
