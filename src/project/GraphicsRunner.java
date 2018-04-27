@@ -16,12 +16,15 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	private boolean[] keys;
 	private BufferedImage back;
 
+	private SpriteTest test;
+	
 	public GraphicsRunner() {
 		setBackground(Color.black);
 		keys = new boolean[5];
 		this.addKeyListener(this);
 		new Thread(this).start();
 		setVisible(true);
+		test = new SpriteTest("images/GrantSprites/sprite_", 64, 0, 10);
 	}
 
 	public void update(Graphics window) {
@@ -40,10 +43,14 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.fillRect(0, 0, 800, 600);
 		
 		
 		
 		//Stuff
+		test.Update();
+		test.draw(graphToBack);
 		
 
 		twoDGraph.drawImage(back, null, 0, 0);
@@ -94,7 +101,7 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	public void run() {
 		try {
 			while (true) {
-				Thread.currentThread().sleep(5);
+				Thread.currentThread().sleep(1000/30);
 				repaint();
 			}
 		} catch (Exception e) {
