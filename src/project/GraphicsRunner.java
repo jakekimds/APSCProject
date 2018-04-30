@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	private boolean[] keys;
 	private BufferedImage back;
-
-	private SpriteTest test;
 	
 	public GraphicsRunner() {
 		setBackground(Color.black);
@@ -24,7 +22,7 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		this.addKeyListener(this);
 		new Thread(this).start();
 		setVisible(true);
-		test = new SpriteTest("images/GrantSprites/sprite_", 64, 0, 10);
+		
 	}
 
 	public void update(Graphics window) {
@@ -49,8 +47,6 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		
 		
 		//Stuff
-		test.Update();
-		test.draw(graphToBack);
 		
 
 		twoDGraph.drawImage(back, null, 0, 0);
