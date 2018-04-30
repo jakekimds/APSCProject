@@ -5,8 +5,8 @@ import java.awt.Component;
 
 public class Runner extends JFrame
 {
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 1024;
+	private static final int HEIGHT = 768;
 
 	public Runner()
 	{
