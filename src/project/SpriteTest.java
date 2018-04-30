@@ -21,7 +21,7 @@ public class SpriteTest{
 		numberOfFrames = endFrame-startFrame+1;
 		images = new Image[numberOfFrames];
 		for(int i = 0; i < images.length; i++){
-			images[i] = loadImage(prefixPath+(i+startFrame)+".png");
+			images[i] = loadImage(prefixPath+(String.format("%02d", i+startFrame))+".png");
 		}
 	}
 	
@@ -35,6 +35,7 @@ public class SpriteTest{
 			return ImageIO.read(new File(path));
 		} catch (Exception e) {
 			//feel free to do something here
+			System.out.println(path);
 		}
 		return null;
 	}
