@@ -3,6 +3,7 @@ package project;
 public class Physics implements Updatable{
 	private Physical physics;
 	private Transform transform;
+	private PhysicsLayer physicsLayer;
 	
 	private boolean kinematic;
 	private boolean useGravity;
