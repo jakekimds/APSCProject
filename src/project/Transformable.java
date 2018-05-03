@@ -1,5 +1,5 @@
 package project;
 
-public interface Transformable {
+public interface Transformable extends BaseObject {
 	public Transform getTransform();
 }

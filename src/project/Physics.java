@@ -13,6 +13,7 @@ public class Physics implements Updatable{
 	public Physics(Physical physics){
 		this.physics = physics;
 		this.transform = physics.getTransform();
+		physics.getScene().addUpdatable(this);
 	}
 
 	public boolean isKinematic() {

@@ -4,16 +4,17 @@ import java.util.List;
 
 //Require Locatable
 
-public class Collider implements Updatable{
+public class Collider{
 	
 	private Collidable collidable;
 	private Transform transform;
 	private CollisionLayer collisionLayer;
 	
-	public Collider(Collidable collidable, CollisionLayer collisionLayer){
+	public Collider(Collidable collidable){
 		this.collidable = collidable;
 		this.transform = collidable.getTransform();
-		this.collisionLayer = collisionLayer;
+		this.collisionLayer = collidable.getScene().getCollisionLayer();
+		collidable.getScene().addCollidable(collidable);
 	}
 	
 	public boolean didCollide(){
@@ -46,9 +47,5 @@ public class Collider implements Updatable{
 			return true;
 		}
 		return false;
-	}
-	
-	public void Update(){
-
 	}
 }
