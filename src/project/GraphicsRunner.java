@@ -12,9 +12,13 @@ import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import game.TestScene;
+
 public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	private boolean[] keys;
 	private BufferedImage back;
+	private Scene scene;
+	private Drawable drawable;
 	
 	public GraphicsRunner() {
 		setBackground(Color.black);
@@ -23,6 +27,7 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		new Thread(this).start();
 		setVisible(true);
 		
+		scene = new TestScene();
 	}
 
 	public void update(Graphics window) {
@@ -41,12 +46,13 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
-		graphToBack.setColor(Color.BLACK);
-		graphToBack.fillRect(0, 0, 800, 600);
+		
 		
 		
 		
 		//Stuff
+		scene.Update();
+		scene.draw(graphToBack);
 		
 
 		twoDGraph.drawImage(back, null, 0, 0);

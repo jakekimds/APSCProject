@@ -4,6 +4,16 @@ public class Transform {
 	private Vector2 location;
 	private Vector2 dimension;
 	
+	public Transform(){
+		location = Vector2.zero();
+		dimension = Vector2.zero();
+	}
+	
+	public Transform(Vector2 loc, Vector2 dim){
+		location = loc;
+		dimension = dim;
+	}
+	
 	public void set(Vector2 location, Vector2 dimension){
 		this.location = location;
 		this.dimension = dimension;

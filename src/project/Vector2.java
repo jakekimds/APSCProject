@@ -42,4 +42,8 @@ public class Vector2 {
 		return new Vector2(0,0);
 	}
 	
+	public String toString(){
+		return "("+getX()+", "+getY()+")";
+	}
+	
 }

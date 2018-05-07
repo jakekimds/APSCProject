@@ -3,7 +3,7 @@ package project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameObject implements BaseObject {
+public class GameObject{
 	Scene scene;
 	List<Script> scripts = new ArrayList<Script>();
 	public GameObject(Scene scene){
@@ -15,6 +15,8 @@ public class GameObject implements BaseObject {
 	}
 	
 	public void addScript(Script script){
-		
+		script.Start(this);
+		scripts.add(script);
+		scene.addUpdatable(script);
 	}
 }

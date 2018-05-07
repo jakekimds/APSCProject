@@ -13,6 +13,7 @@ public class Physics implements Updatable{
 	public Physics(Physical physics){
 		this.physics = physics;
 		this.transform = physics.getTransform();
+		velocity = new Vector2(0,0);
 		physics.getScene().addUpdatable(this);
 	}
 
@@ -49,7 +50,8 @@ public class Physics implements Updatable{
 	}
 	
 	public void Update(){
-		Move(velocity);
+		ApplyGravity();
+		ApplyMotion();
 	}
 	
 	public boolean willCollide(Vector2 movement){
@@ -60,6 +62,9 @@ public class Physics implements Updatable{
 		transform.setLocation(newLoc);
 		boolean willCollide = physics.getCollider().didCollide();
 		
+		System.out.print(didCollide);
+		System.out.println(willCollide);
+		
 		if(!didCollide && willCollide){
 			return true;
 		}
@@ -68,7 +73,7 @@ public class Physics implements Updatable{
 	
 	private void ApplyGravity(){
 		if(useGravity){
-			velocity.add(Vector2.up().multiply(-1));
+			velocity = velocity.add(Vector2.up().multiply(2));
 		}
 	}
 	private void ApplyMotion(){

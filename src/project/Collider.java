@@ -1,5 +1,6 @@
 package project;
 
+import java.awt.Color;
 import java.util.List;
 
 //Require Locatable
@@ -23,10 +24,12 @@ public class Collider{
 			Collidable item = layeritems.get(i);
 			if(item != collidable){
 				if(didCollide(item)){
+					collidable.getScene().setBackgroundColor(Color.WHITE);
 					return true;
 				}
 			}
 		}
+		collidable.getScene().setBackgroundColor(Color.BLACK);
 		return false;
 	}
 	
