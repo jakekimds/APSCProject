@@ -7,7 +7,8 @@ public class TestScene extends Scene {
 	Sprite testObj;
 	Sprite testObj2;
 	
-	public TestScene(){
+	public TestScene(GraphicsRunner runner){
+		super(runner);
 		testObj = new Sprite(this);
 		testObj.getPhysics().setUseGravity(true);
 		addDrawable(testObj);

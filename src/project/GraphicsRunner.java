@@ -11,6 +11,8 @@ import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import game.TestScene;
 
@@ -19,6 +21,8 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	private BufferedImage back;
 	private Scene scene;
 	private Drawable drawable;
+	private Set<Integer> key;
+	private Set<Integer> keydown;
 	
 	public GraphicsRunner() {
 		setBackground(Color.black);
@@ -26,8 +30,10 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		this.addKeyListener(this);
 		new Thread(this).start();
 		setVisible(true);
+		key = new HashSet<Integer>();
+		keydown = new HashSet<Integer>();
 		
-		scene = new TestScene();
+		scene = new TestScene(this);
 	}
 
 	public void update(Graphics window) {
@@ -56,6 +62,14 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		
 
 		twoDGraph.drawImage(back, null, 0, 0);
+		keydown.clear();
+	}
+	
+	public boolean getKey(int keycode){
+		return key.contains(keycode);
+	}
+	public boolean getKeyDown(int keycode){
+		return keydown.contains(keycode);
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -74,7 +88,8 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = true;
 		}
-		repaint();
+		key.add(e.getKeyCode());
+		keydown.add(e.getKeyCode());
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -93,7 +108,7 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			keys[4] = false;
 		}
-		repaint();
+		key.remove(e.getKeyCode());
 	}
 
 	public void keyTyped(KeyEvent e) {

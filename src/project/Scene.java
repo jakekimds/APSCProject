@@ -10,6 +10,11 @@ public class Scene{
 	List<Updatable> updatables = new ArrayList<Updatable>();
 	List<Drawable> drawables = new ArrayList<Drawable>();
 	public Color backgroundColor = Color.BLACK;
+	private GraphicsRunner runner;
+	
+	public Scene(GraphicsRunner runner){
+		this.runner = runner;
+	}
 	
 	public void addUpdatable(Updatable updatable){
 		updatables.add(updatable);
@@ -30,6 +35,10 @@ public class Scene{
 		for(Updatable updatable : updatables){
 			updatable.Update();
 		}
+	}
+	
+	public GraphicsRunner getRunner(){
+		return runner;
 	}
 	
 	public Color getBackgroundColor() {
