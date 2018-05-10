@@ -4,15 +4,15 @@ import project.*;
 
 public class TestScene extends Scene {
 	
-	TestObj testObj;
-	TestObj testObj2;
+	Sprite testObj;
+	Sprite testObj2;
 	
 	public TestScene(){
-		testObj = new TestObj(this);
-		addDrawable(testObj);
+		testObj = new Sprite(this);
 		testObj.getPhysics().setUseGravity(true);
+		addDrawable(testObj);
 		
-		testObj2 = new TestObj(this);
+		testObj2 = new Sprite(this);
 		testObj2.getTransform().setLocation(new Vector2(100, 500));
 		addDrawable(testObj2);
 	}

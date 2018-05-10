@@ -56,16 +56,12 @@ public class Physics implements Updatable{
 	
 	public boolean willCollide(Vector2 movement){
 		Vector2 oldLoc = transform.getLocation();
-		boolean didCollide = physics.getCollider().didCollide();
-		
-		Vector2 newLoc = transform.getLocation().add(movement);
+		Vector2 newLoc = oldLoc.add(movement);
 		transform.setLocation(newLoc);
-		boolean willCollide = physics.getCollider().didCollide();
+		boolean willCollide = physics.getCollider().isColliding();
+		transform.setLocation(newLoc.add(movement.multiply(-1)));
 		
-		System.out.print(didCollide);
-		System.out.println(willCollide);
-		
-		if(!didCollide && willCollide){
+		if(willCollide){
 			return true;
 		}
 		return false;
@@ -73,7 +69,7 @@ public class Physics implements Updatable{
 	
 	private void ApplyGravity(){
 		if(useGravity){
-			velocity = velocity.add(Vector2.up().multiply(2));
+			velocity = velocity.add(Vector2.up().multiply(-2));
 		}
 	}
 	private void ApplyMotion(){
@@ -81,11 +77,20 @@ public class Physics implements Updatable{
 	}
 	
 	public void Move(Vector2 movement){
-		if(!kinematic && willCollide(movement)){
-			velocity = Vector2.zero();
-			return;
+		Vector2 xMov = movement.withY(0);
+		Vector2 yMov = movement.withX(0);
+		Vector2 newLoc = transform.getLocation();
+		if(kinematic || !willCollide(xMov)){
+			newLoc = newLoc.add(xMov);
+		}else{
+			velocity = velocity.withX(0);
 		}
-		Vector2 newLoc = transform.getLocation().add(movement);
+		if(kinematic || !willCollide(yMov)){
+			newLoc = newLoc.add(yMov);
+		}else{
+			velocity = velocity.withY(0);
+		}
+		
 		transform.setLocation(newLoc);
 	}
 	

@@ -18,26 +18,24 @@ public class Collider{
 		collidable.getScene().addCollidable(collidable);
 	}
 	
-	public boolean didCollide(){
+	public boolean isColliding(){
 		List<Collidable> layeritems = collisionLayer.getList();
 		for(int i = 0; i < layeritems.size(); i++){
 			Collidable item = layeritems.get(i);
 			if(item != collidable){
-				if(didCollide(item)){
-					collidable.getScene().setBackgroundColor(Color.WHITE);
+				if(isColliding(item)){
 					return true;
 				}
 			}
 		}
-		collidable.getScene().setBackgroundColor(Color.BLACK);
 		return false;
 	}
 	
-	public boolean didCollide(Collidable other){
-		return didCollide(collidable, other);
+	public boolean isColliding(Collidable other){
+		return isColliding(collidable, other);
 	}
 	
-	public static boolean didCollide(Collidable obj, Collidable other){
+	public static boolean isColliding(Collidable obj, Collidable other){
 		Transform otherTransform = other.getTransform();
 		Transform transform = obj.getTransform();
 		Vector2 thisDimension = transform.getDimension();

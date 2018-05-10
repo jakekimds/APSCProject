@@ -23,6 +23,14 @@ public class Vector2 {
 		return multiply(this, scalar);
 	}
 	
+	public Vector2 withX(int x){
+		return new Vector2(x, getY());
+	}
+	
+	public Vector2 withY(int y){
+		return new Vector2(getX(), y);
+	}
+	
 	public static Vector2 add(Vector2 vec1, Vector2 vec2){
 		return new Vector2(vec1.getX() + vec2.getX(), vec1.getY() + vec2.getY());
 	}
@@ -32,7 +40,7 @@ public class Vector2 {
 	}
 	
 	public static Vector2 up(){
-		return new Vector2(0, 1);
+		return new Vector2(0, -1);
 	}
 	public static Vector2 right(){
 		return new Vector2(1, 0);

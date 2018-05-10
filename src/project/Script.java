@@ -1,6 +1,6 @@
 package project;
 
-public class Script implements Updatable{
+public abstract class Script implements Updatable{
 	
 	GameObject gameObject;
 	
@@ -8,7 +8,9 @@ public class Script implements Updatable{
 		this.gameObject = gameObject;
 	}
 	
-	public void Update(){
-		
+	public GameObject gameObject(){
+		return gameObject;
 	}
+	
+	public abstract void Update();
 }
