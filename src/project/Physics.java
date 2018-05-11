@@ -1,5 +1,7 @@
 package project;
 
+import java.util.List;
+
 public class Physics implements Updatable{
 	private Physical physics;
 	private Transform transform;
@@ -9,6 +11,7 @@ public class Physics implements Updatable{
 	private boolean useGravity;
 	private Vector2 velocity;
 	private float mass;
+	private boolean didCollide = false;
 	
 	public Physics(Physical physics){
 		this.physics = physics;
@@ -59,6 +62,8 @@ public class Physics implements Updatable{
 		Vector2 newLoc = oldLoc.add(movement);
 		transform.setLocation(newLoc);
 		boolean willCollide = physics.getCollider().isColliding();
+		boolean oldCollide = didCollide;
+		didCollide = willCollide;
 		transform.setLocation(newLoc.add(movement.multiply(-1)));
 		
 		if(willCollide){

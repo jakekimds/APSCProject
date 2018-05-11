@@ -32,8 +32,8 @@ public class Scene{
 	}
 	
 	public void Update(){
-		for(Updatable updatable : updatables){
-			updatable.Update();
+		for(int i = 0; i < updatables.size(); i++){
+			updatables.get(i).Update();
 		}
 	}
 	

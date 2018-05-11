@@ -7,6 +7,7 @@ public class GameObject implements BaseObject, Transformable{
 	Scene scene;
 	List<Script> scripts = new ArrayList<Script>();
 	Transform transform;
+	String tag;
 	
 	public GameObject(Scene scene){
 		this.scene = scene;
@@ -22,8 +23,19 @@ public class GameObject implements BaseObject, Transformable{
 		scripts.add(script);
 		scene.addUpdatable(script);
 	}
+	public List<Script> getScripts(){
+		return scripts;
+	}
 	
 	public Transform getTransform() {
 		return transform;
+	}
+	
+	public String getTag(){
+		return tag;
+	}
+	
+	public void setTag(String tag){
+		this.tag = tag;
 	}
 }

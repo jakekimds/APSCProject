@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import game.IntroScene;
 import game.TestScene;
 
 public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
@@ -33,7 +34,7 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 		key = new HashSet<Integer>();
 		keydown = new HashSet<Integer>();
 		
-		scene = new TestScene(this);
+		scene = new IntroScene(this);
 	}
 
 	public void update(Graphics window) {
@@ -63,6 +64,10 @@ public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 
 		twoDGraph.drawImage(back, null, 0, 0);
 		keydown.clear();
+	}
+	
+	public void setScene(Scene scene){
+		this.scene = scene;
 	}
 	
 	public boolean getKey(int keycode){

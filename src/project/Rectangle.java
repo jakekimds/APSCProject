@@ -1,5 +1,6 @@
-package game;
+package project;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -7,30 +8,30 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import game.TestScript;
 import project.*;
 
-public class Sprite extends GameObject implements Drawable, Physical{
+public class Rectangle extends GameObject implements Drawable, Physical{
 	
 	private Transform transform;
 	private Collider collider;
 	private Physics physics;
-	
-	private Img image;
 
-	public Sprite(Scene scene) {
+	Color color;
+
+	public Rectangle(Scene scene, Vector2 dimensions, Color col) {
 		super(scene);
-		image = new Img("images/GrantSprites/sprite_00.png");
-		transform = new Transform(new Vector2(100, 100), image.getDimensions());
+		transform = new Transform(new Vector2(100, 100), dimensions);
 		collider = new Collider(this);
 		physics = new Physics(this);
-		
-		addScript(new TestScript());
+		color = col;
 	}
 	
 	public void draw(Graphics window) {
 		Vector2 location = transform.getLocation();
 		Vector2 dimension = transform.getDimension();
-		image.draw(window, location.getX(), location.getY());
+		window.setColor(color);
+		window.fillRect(location.getX(), location.getY(), dimension.getX(), dimension.getY());
 	}
 
 	public Transform getTransform() {

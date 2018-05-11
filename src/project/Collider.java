@@ -24,6 +24,10 @@ public class Collider{
 			Collidable item = layeritems.get(i);
 			if(item != collidable){
 				if(isColliding(item)){
+					List<Script> scripts = collidable.getScripts();
+					for(int k = 0; k < scripts.size(); k++){
+						scripts.get(k).OnCollide(item);
+					}
 					return true;
 				}
 			}

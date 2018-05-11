@@ -12,5 +12,9 @@ public abstract class Script implements Updatable{
 		return gameObject;
 	}
 	
+	public void OnCollide(BaseObject obj){
+		
+	}
+	
 	public abstract void Update();
 }
