@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import game.IntroScene;
-import game.TestScene;
+import game.MainScene;
 
 public class GraphicsRunner extends Canvas implements KeyListener, Runnable {
 	private boolean[] keys;

@@ -12,6 +12,7 @@ public class Text extends GameObject implements Drawable {
 	public Text(Scene scene) {
 		super(scene);
 		string = "";
+		scene.addDrawable(this);
 	}
 	
 	public void setString(String str){

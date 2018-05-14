@@ -5,7 +5,7 @@ import java.lang.reflect.GenericArrayType;
 
 import project.*;
 
-public class TestScript extends Script {
+public class PlayerScript extends Script {
 	
 	public int countDown = 150;
 	public int points = 0;

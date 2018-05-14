@@ -10,7 +10,7 @@ public class NextScene extends Script{
 
 	public void Update() {
 		if(gameObject().getScene().getRunner().getKeyDown(KeyEvent.VK_ENTER)){
-			gameObject().getScene().getRunner().setScene(new TestScene(gameObject().getScene().getRunner()));
+			gameObject().getScene().getRunner().setScene(new MainScene(gameObject().getScene().getRunner()));
 		}
 	}
 

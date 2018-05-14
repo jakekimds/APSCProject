@@ -8,7 +8,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import game.TestScript;
+import game.PlayerScript;
 import project.*;
 
 public class Rectangle extends GameObject implements Drawable, Physical{
@@ -25,6 +25,7 @@ public class Rectangle extends GameObject implements Drawable, Physical{
 		collider = new Collider(this);
 		physics = new Physics(this);
 		color = col;
+		scene.addDrawable(this);
 	}
 	
 	public void draw(Graphics window) {
