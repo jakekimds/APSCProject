@@ -12,7 +12,7 @@ public class IntroScene extends Scene{
 		Text text = new Text(this);
 		text.getTransform().setLocation(new Vector2(50, down));
 		text.setString("Platformer 3000");
-		down += 50;
+		down += 100;
 		
 		text = new Text(this);
 		text.getTransform().setLocation(new Vector2(50, down));
@@ -32,7 +32,7 @@ public class IntroScene extends Scene{
 		text = new Text(this);
 		text.getTransform().setLocation(new Vector2(50, down));
 		text.setString("Press enter to play");
-		down += 50;
+		down += 100;
 		
 		if(score > 0){
 			text = new Text(this);

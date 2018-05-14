@@ -27,7 +27,7 @@ public class Spawner extends GameObject implements Updatable{
 		difficulty = (float)time/(time + 500);
 		if(countDown <= 0){
 			Rectangle testObj2;
-			if(random.nextInt(10) == 1){
+			if(random.nextInt(100) <= 5){
 				testObj2 = new Rectangle(scene, new Vector2(100, 20), Color.red);
 				testObj2.setTag("ground");
 			}else{
