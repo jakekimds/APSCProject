@@ -20,6 +20,7 @@ public class Spawner extends GameObject implements Updatable{
 		random = new Random();
 		time = 0;
 		difficulty = (float)time/(time + 500);
+		countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1)+50;
 	}
 
 	public void Update() {
