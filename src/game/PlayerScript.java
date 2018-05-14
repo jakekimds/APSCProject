@@ -12,11 +12,12 @@ public class PlayerScript extends Script {
 	public Text score;
 
 	public void Update() {
-		score.setString(""+points);
 		if(countDown <= 0){
+			score.setString("Score: "+points);
 			((Physical)gameObject()).getPhysics().setUseGravity(true);
 			points++;
 		}else{
+			score.setString("Starting in: "+countDown);
 			countDown --;
 			return;
 		}
@@ -34,7 +35,7 @@ public class PlayerScript extends Script {
 	
 public void OnCollide(BaseObject obj){
 		if(obj.getTag() == "ground"){
-			System.out.println("dfsd");
+			IntroScene.score = points;
 			gameObject().getScene().backgroundColor = Color.red;
 			gameObject().getScene().getRunner().setScene(new IntroScene(gameObject().getScene().getRunner()));
 		}

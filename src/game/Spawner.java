@@ -36,7 +36,6 @@ public class Spawner extends GameObject implements Updatable{
 			testObj2.getTransform().setLocation(getTransform().getLocation());
 			testObj2.addScript(new PlatformScript());
 			scene.addDrawable(testObj2);
-			System.out.println(difficulty);
 			countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1)+50;
 		}
 		countDown -= 1;

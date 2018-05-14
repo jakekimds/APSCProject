@@ -13,7 +13,7 @@ public class MainScene extends Scene {
 	public MainScene(GraphicsRunner runner){
 		super(runner);
 		Text text = new Text(this);
-		text.getTransform().setLocation(new Vector2(50, 50));
+		text.getTransform().setLocation(new Vector2(50, 70));
 		
 		testObj2 = new Rectangle(this, new Vector2(50, 50), Color.blue);
 		testObj2.getPhysics().setUseGravity(false);
