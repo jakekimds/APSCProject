@@ -7,7 +7,7 @@ import project.*;
 
 public class PlayerScript extends Script {
 	
-	public int countDown = 150;
+	public int countDown = 175;
 	public int points = 0;
 	public Text score;
 
