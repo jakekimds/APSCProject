@@ -38,6 +38,12 @@ public void OnCollide(BaseObject obj){
 			IntroScene.score = points;
 			gameObject().getScene().backgroundColor = Color.red;
 			gameObject().getScene().getRunner().setScene(new IntroScene(gameObject().getScene().getRunner()));
+		}else{
+			Transform transform = gameObject().getTransform();
+			Transform objTransform = obj.getTransform();
+			if(transform.getLocation().getY() + transform.getDimension().getY() > objTransform.getLocation().getY() || transform.getLocation().getY() < objTransform.getLocation().getY() + objTransform.getDimension().getY()){
+				transform.setLocation(objTransform.getLocation().add(transform.getDimension().withX(0).multiply(-1)));
+			}
 		}
 	}
 
