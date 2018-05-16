@@ -10,6 +10,9 @@ public class PlayerScript extends Script {
 	public int countDown = 175;
 	public int points = 0;
 	public Text score;
+	
+	private boolean jumped = false;
+	private int jump;
 
 	public void Update() {
 		if(countDown <= 0){
@@ -31,6 +34,11 @@ public class PlayerScript extends Script {
 			((Physical)gameObject()).getPhysics().setVelocity((Vector2.up().multiply(30)));
 		}
 		
+		if(jumped){
+			gameObject().getTransform().setLocation(gameObject().getTransform().getLocation().withY(jump));
+			jumped = false;
+		}
+		
 	}
 	
 public void OnCollide(BaseObject obj){
@@ -42,7 +50,13 @@ public void OnCollide(BaseObject obj){
 			Transform transform = gameObject().getTransform();
 			Transform objTransform = obj.getTransform();
 			if(transform.getLocation().getY() + transform.getDimension().getY() > objTransform.getLocation().getY() || transform.getLocation().getY() < objTransform.getLocation().getY() + objTransform.getDimension().getY()){
-				transform.setLocation(objTransform.getLocation().add(transform.getDimension().withX(0).multiply(-1)));
+				if(((Physical)gameObject()).getPhysics().getVelocity().getY() > 0){
+					jump = (objTransform.getLocation().add(transform.getDimension().withX(0).multiply(-1)).getY());
+					jumped = true;
+				}else{
+					jump = (objTransform.getLocation().add(objTransform.getDimension().withX(0)).getY());
+					jumped = true;
+				}
 			}
 		}
 	}

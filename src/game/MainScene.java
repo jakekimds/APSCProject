@@ -33,6 +33,7 @@ public class MainScene extends Scene {
 		testObj3.getTransform().setLocation(new Vector2(800, 450));
 		
 		testObj3 = new Spawner(this);
+		((Spawner)testObj3).spawnRed = true;
 		testObj3.getTransform().setLocation(new Vector2(1000, 300));
 		
 		testObj3 = new Spawner(this);

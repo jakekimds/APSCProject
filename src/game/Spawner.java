@@ -12,6 +12,7 @@ public class Spawner extends GameObject implements Updatable{
 	Random random;
 	int time = 0;
 	float difficulty;
+	public boolean spawnRed = false;
 
 	public Spawner(Scene scene) {
 		super(scene);
@@ -20,7 +21,7 @@ public class Spawner extends GameObject implements Updatable{
 		random = new Random();
 		time = 0;
 		difficulty = (float)time/(time + 500);
-		countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1)+50;
+		countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1);
 	}
 
 	public void Update() {
@@ -28,7 +29,7 @@ public class Spawner extends GameObject implements Updatable{
 		difficulty = (float)time/(time + 500);
 		if(countDown <= 0){
 			Rectangle testObj2;
-			if(random.nextInt(100) <= 5){
+			if(spawnRed && random.nextInt(100) <= 5){
 				testObj2 = new Rectangle(scene, new Vector2(100, 20), Color.red);
 				testObj2.setTag("ground");
 			}else{
