@@ -30,14 +30,14 @@ public class Spawner extends GameObject implements Updatable{
 		if(countDown <= 0){
 			Rectangle testObj2;
 			if(spawnRed && random.nextInt(100) <= 5){
-				testObj2 = new Rectangle(scene, new Vector2(100, 20), Color.red);
-				testObj2.setTag("ground");
+				//testObj2 = new Rectangle(scene, new Vector2(100, 20), Color.red);
+				//testObj2.setTag("ground");
 			}else{
 				testObj2 = new Rectangle(scene, new Vector2(100, 20), Color.green);
+				testObj2.getTransform().setLocation(getTransform().getLocation());
+				testObj2.addScript(new PlatformScript());
+				scene.addDrawable(testObj2);
 			}
-			testObj2.getTransform().setLocation(getTransform().getLocation());
-			testObj2.addScript(new PlatformScript());
-			scene.addDrawable(testObj2);
 			countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1)+50;
 		}
 		countDown -= 1;
