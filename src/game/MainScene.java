@@ -38,6 +38,10 @@ public class MainScene extends Scene {
 		
 		testObj3 = new Spawner(this);
 		testObj3.getTransform().setLocation(new Vector2(1200, 150));
+		
+		PlayerScript.countDown = 175;
+		PlayerScript.speed = 6;
+		
 	}
 	
 }

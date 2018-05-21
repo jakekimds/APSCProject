@@ -16,6 +16,7 @@ public class Rectangle extends GameObject implements Drawable, Physical{
 	private Transform transform;
 	private Collider collider;
 	private Physics physics;
+	private Image img;
 
 	Color color;
 
@@ -26,13 +27,26 @@ public class Rectangle extends GameObject implements Drawable, Physical{
 		physics = new Physics(this);
 		color = col;
 		scene.addDrawable(this);
+		setImage("img.png");
 	}
 	
 	public void draw(Graphics window) {
 		Vector2 location = transform.getLocation();
 		Vector2 dimension = transform.getDimension();
-		window.setColor(color);
-		window.fillRect(location.getX(), location.getY(), dimension.getX(), dimension.getY());
+		int x = dimension.getX();
+		int y = dimension.getY();
+		
+		window.drawImage(img, location.getX(), location.getY() , x, y, null);
+//		window.setColor(color);
+//		window.fillRect(location.getX(), location.getY(), dimension.getX(), dimension.getY());
+	}
+	
+	public void setImage(String path){
+		try {
+			img = ImageIO.read(new File(path));
+		} catch (Exception e) {
+			System.out.println("Image Exception");
+		}
 	}
 
 	public Transform getTransform() {

@@ -40,7 +40,8 @@ public class Spawner extends GameObject implements Updatable{
 			}
 			countDown = random.nextInt(Math.abs((int)(100 * difficulty))+1)+50;
 		}
-		countDown -= 1;
+
+		countDown -= PlayerScript.speed;
 	}
 	
 

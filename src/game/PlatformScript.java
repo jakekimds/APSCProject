@@ -4,7 +4,8 @@ import project.*;
 
 public class PlatformScript extends Script{
 	public void Update() {
-		gameObject().getTransform().setLocation(gameObject().getTransform().getLocation().add(Vector2.right().multiply(-5)));
+		int speed = 5;
+		gameObject().getTransform().setLocation(gameObject().getTransform().getLocation().add(Vector2.right().multiply((int)(-speed * PlayerScript.speed))));
 	}
 
 }

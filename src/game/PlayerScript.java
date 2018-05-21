@@ -7,7 +7,8 @@ import project.*;
 
 public class PlayerScript extends Script {
 	
-	public int countDown = 175;
+	public static int countDown = 175;
+	public static float speed = 6;
 	public int points = 0;
 	public Text score;
 	
@@ -16,12 +17,17 @@ public class PlayerScript extends Script {
 
 	public void Update() {
 		if(countDown <= 0){
+			if(speed >= 6){
+				//speed = 1;
+			}else{
+				speed *= 1.0001;
+			}
 			score.setString("Score: "+points);
 			((Physical)gameObject()).getPhysics().setUseGravity(true);
 			points++;
 		}else{
 			score.setString("Starting in: "+countDown);
-			countDown --;
+			countDown -= speed;
 			return;
 		}
 		if(gameObject().getScene().getRunner().getKey(KeyEvent.VK_D)){
